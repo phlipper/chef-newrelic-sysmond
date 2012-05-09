@@ -1,40 +1,46 @@
-# DESCRIPTION
+# chef-newrelic-sysmond
+
+## Description
 
 Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-server-monitoring), New Relic for Server Monitoring.
 
 
-# REQUIREMENTS
+## Requirements
 
-## Supported Platforms
+### Supported Platforms
 
 The following platforms are supported by this cookbook, meaning that the recipes run on these platforms without error:
 
 * Ubuntu
 
-# RECIPES
+## Recipes
 
 * `newrelic-sysmond` - The default recipe.
 
-# USAGE
+## Usage
 
 This cookbook installs the newrelic-sysmond components if not present, and pulls updates if they are installed on the system.
 
-# ATTRIBUTES
+## Attributes
 
-* `node[:new_relic][:license_key]`    default: ""
-* `node[:new_relic][:loglevel]`       default: "info"
-* `node[:new_relic][:logfile]`        default: "/var/log/newrelic/nrsysmond.log"
-* `node[:new_relic][:proxy]`          default: ""
-* `node[:new_relic][:ssl]`            default: "false"
-* `node[:new_relic][:ssl_ca_bundle]`  default: ""
-* `node[:new_relic][:ssl_ca_path]`    default: ""
-* `node[:new_relic][:pidfile]`        default: ""
-* `node[:new_relic][:collector_host]` default: "collector.newrelic.com"
-* `node[:new_relic][:timeout]`        default: 30
+```ruby
+default["new_relic"]["keyserver"]      = "keys.gnupg.net"
+default["new_relic"]["license_key"]    = ""
+default["new_relic"]["loglevel"]       = "info"
+default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
+default["new_relic"]["proxy"]          = ""
+default["new_relic"]["ssl"]            = "false"
+default["new_relic"]["ssl_ca_bundle"]  = ""
+default["new_relic"]["ssl_ca_path"]    = ""
+default["new_relic"]["pidfile"]        = ""
+default["new_relic"]["collector_host"] = "collector.newrelic.com"
+default["new_relic"]["timeout"]        = 30
+```
+
 
 ## Basic Settings
 
-You must set the value for `node[:new_relic][:license_key]`
+You must set the value for `node["new_relic"]["license_key"]`
 
 
 ## Contributing
