@@ -7,7 +7,7 @@
 # Copyright 2011-2012, Phil Cohen
 #
 
-default["new_relic"]["keyserver"]      = "keys.gnupg.net"
+default["new_relic"]["keyserver"]      = "pgp.mit.edu"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
 default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"

@@ -9,7 +9,7 @@ apt_repository "newrelic" do
   uri "http://apt.newrelic.com/debian/"
   components ["newrelic", "non-free"]
   key "548C16BF"
-  keyserver "subkeys.pgp.net"
+  keyserver node["new_relic"]["keyserver"]
   action :add
 end
 
