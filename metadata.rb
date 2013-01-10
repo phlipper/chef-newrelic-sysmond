@@ -8,4 +8,5 @@ version          "1.1.1"
 
 recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
+supports "debian"
 supports "ubuntu"
