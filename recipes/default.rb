@@ -16,14 +16,14 @@ end
 
 package "newrelic-sysmond"
 
-service "newrelic-sysmond" do
-  action [:enable, :start]
-end
-
 template "/etc/newrelic/nrsysmond.cfg" do
   source "nrsysmond.cfg.erb"
   owner "root"
   group "newrelic"
   mode 0640
   notifies :restart, "service[newrelic-sysmond]"
+end
+
+service "newrelic-sysmond" do
+  action [:enable, :start]
 end
