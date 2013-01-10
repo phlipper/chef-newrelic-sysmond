@@ -11,9 +11,14 @@ apt_repository "newrelic" do
   key "548C16BF"
   keyserver node["new_relic"]["keyserver"]
   action :add
+  notifies :run, "execute[apt-get update]", :immediately
 end
 
 package "newrelic-sysmond"
+
+service "newrelic-sysmond" do
+  action [:enable, :start]
+end
 
 template "/etc/newrelic/nrsysmond.cfg" do
   source "nrsysmond.cfg.erb"
@@ -21,8 +26,4 @@ template "/etc/newrelic/nrsysmond.cfg" do
   group "newrelic"
   mode 0640
   notifies :restart, "service[newrelic-sysmond]"
-end
-
-service "newrelic-sysmond" do
-  action [:enable, :start]
 end
