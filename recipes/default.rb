@@ -13,7 +13,6 @@ unless node["new_relic"]["license_key"].empty?
     key "548C16BF"
     keyserver node["new_relic"]["keyserver"]
     action :add
-    notifies :run, "execute[apt-get update]", :immediately
   end
 
   package "newrelic-sysmond"
