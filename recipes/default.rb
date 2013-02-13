@@ -18,7 +18,7 @@ unless node["new_relic"]["license_key"].empty?
       action :add
     end
 
-  when "redhat", "centos"
+  when "redhat", "centos", "amazon", "scientific"
 
     execute "Add New Relic yum repository" do
       command "rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm"
