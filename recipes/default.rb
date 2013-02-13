@@ -7,12 +7,24 @@
 
 unless node["new_relic"]["license_key"].empty?
 
-  apt_repository "newrelic" do
-    uri "http://apt.newrelic.com/debian/"
-    components ["newrelic", "non-free"]
-    key "548C16BF"
-    keyserver node["new_relic"]["keyserver"]
-    action :add
+  case node['platform']
+  when "debian", "ubuntu"
+    
+    apt_repository "newrelic" do
+      uri "http://apt.newrelic.com/debian/"
+      components ["newrelic", "non-free"]
+      key "548C16BF"
+      keyserver node["new_relic"]["keyserver"]
+      action :add
+    end
+
+  when "redhat", "centos"
+
+    execute "Add New Relic yum repository" do
+      command "rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm"
+      not_if "yum list installed | grep newrelic-repo.noarch"
+    end
+
   end
 
   package "newrelic-sysmond"
