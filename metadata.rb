@@ -10,3 +10,5 @@ recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
 supports "debian"
 supports "ubuntu"
+supports "redhat", ">= 5.0"
+supports "centos", ">= 5.0"
