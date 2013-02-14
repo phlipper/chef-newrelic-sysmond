@@ -55,6 +55,15 @@ You must set the value for `node["new_relic"]["license_key"]`
 5. Create new Pull Request
 
 
+
+## Contributors
+
+Many thanks go to the following [contributors](https://github.com/phlipper/chef-newrelic-sysmond/graphs/contributors) who have helped to make this cookbook even better:
+
+* **[@dwradcliffe](https://github.com/dwradcliffe)**
+    * add support for redhat/centos
+
+
 ## License
 
 **chef-newrelic-sysmond**
