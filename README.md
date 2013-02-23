@@ -62,6 +62,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
 
 * **[@dwradcliffe](https://github.com/dwradcliffe)**
     * add support for redhat/centos
+* **[@fredjean](https://github.com/fredjean)**
+    * fix default keyserver host name
 
 
 ## License
