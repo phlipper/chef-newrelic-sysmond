@@ -27,7 +27,7 @@ This cookbook installs the newrelic-sysmond components if not present, and pulls
 ## Attributes
 
 ```ruby
-default["new_relic"]["keyserver"]      = "keys.gnupg.net"
+default["new_relic"]["keyserver"]      = "subkeys.pgp.net"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
 default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
