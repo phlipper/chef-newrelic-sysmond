@@ -7,6 +7,12 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 
 ## Requirements
 
+### Cookbooks
+
+The following cookbooks are direct dependencies:
+
+* apt (for Debian and Ubuntu)
+
 ### Supported Platforms
 
 The following platforms are supported by this cookbook, meaning that the recipes run on these platforms without error:
