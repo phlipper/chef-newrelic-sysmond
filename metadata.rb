@@ -8,6 +8,8 @@ version          "1.3.2"
 
 recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
+depends 'apt', '>= 1.9.2'
+
 supports "debian"
 supports "ubuntu"
 supports "redhat", ">= 5.0"
