@@ -70,6 +70,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * add support for redhat/centos
 * **[@fredjean](https://github.com/fredjean)**
     * fix default keyserver host name
+* **[@joe1chen](https://github.com/joe1chen)**
+    * add apt dependency to metadata
 
 
 ## License
