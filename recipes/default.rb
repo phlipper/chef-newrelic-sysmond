@@ -2,14 +2,14 @@
 # Cookbook Name:: newrelic-sysmond
 # Recipe:: default
 #
-# Copyright 2011-2012, Phil Cohen
+# Copyright 2011-2014, Phil Cohen
 #
 
 unless node["new_relic"]["license_key"].empty?
 
   case node['platform']
   when "debian", "ubuntu"
-    
+
     apt_repository "newrelic" do
       uri "http://apt.newrelic.com/debian/"
       components ["newrelic", "non-free"]

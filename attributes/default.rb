@@ -4,7 +4,7 @@
 #
 # Author:: Phil Cohen <github@phlippers.net>
 #
-# Copyright 2011-2012, Phil Cohen
+# Copyright 2011-2014, Phil Cohen
 #
 
 default["new_relic"]["keyserver"]      = "keyserver.ubuntu.com"
