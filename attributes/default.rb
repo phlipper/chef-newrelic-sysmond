@@ -7,7 +7,7 @@
 # Copyright 2011-2012, Phil Cohen
 #
 
-default["new_relic"]["keyserver"]      = "subkeys.pgp.net"
+default["new_relic"]["keyserver"]      = "keyserver.ubuntu.com"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
 default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
