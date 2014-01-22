@@ -18,3 +18,4 @@ default["new_relic"]["ssl_ca_path"]    = ""
 default["new_relic"]["pidfile"]        = ""
 default["new_relic"]["collector_host"] = "collector.newrelic.com"
 default["new_relic"]["timeout"]        = 30
+default["new_relic"]["hostname"]       = nil

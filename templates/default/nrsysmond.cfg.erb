@@ -15,8 +15,8 @@
 #
 license_key=<%= node["new_relic"]["license_key"] %>
 
-<% if node["fqdn"] %>
-hostname=<%= node["fqdn"] %>
+<% if node["new_relic"]["hostname"] %>
+hostname=<%= node["new_relic"]["hostname"] %>
 <% end %>
 
 #
