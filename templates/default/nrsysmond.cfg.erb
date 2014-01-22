@@ -129,3 +129,30 @@ collector_host=<%= node["new_relic"]["collector_host"] %>
 # Default: 30
 #
 timeout=<%= node["new_relic"]["timeout"] %>
+
+#
+# Option : hostname
+# Value  : If you do not want to change the hostname at the OS level, you can
+#          modify the nrsysmond.cfg file to contain a new hostname=
+#          configuration setting that reports a different default server name.
+#
+#          Caution: The New Relic user interface uses the hostname to link
+#          monitored applications to the server they are running on. Using the
+#          hostname= configuration setting in the nrsysmond.cfg file may cause a
+#          different name to be reported for the server than what is reported by
+#          any monitored applications. This difference may cause the linkage
+#          between the application and the server in the New Relic user
+#          interface to break.
+#
+#          Additionally, be aware that using the hostname= configuration setting
+#          in the nrsysmond.cfg file explicitly overrides reporting of the OS
+#          level hostname in the server monitor. Any subsequent update to the OS
+#          level hostname will be reflected only in the monitored application in
+#          the New Relic user interface. This difference may cause the linkage
+#          between the application and the server in the New Relic user
+#          interface to break.
+# Default: OS hostname
+#
+<% unless node["new_relic"]["hostname"].empty? -%>
+hostname=<%= node["new_relic"]["hostname"] %>
+<% end %>
