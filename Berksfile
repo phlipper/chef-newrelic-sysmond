@@ -1,0 +1,1 @@
+cookbook "newrelic-sysmond", path: "."
