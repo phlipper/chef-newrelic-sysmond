@@ -5,4 +5,8 @@ vendor/bundle
 .DS_Store
 build/*
 tmp/
+Berksfile.lock
 Gemfile.lock
+test/support/chef-10.gemfile.lock
+test/support/chef-11.gemfile.lock
+.coverage
