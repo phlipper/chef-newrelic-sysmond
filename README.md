@@ -44,6 +44,7 @@ default["new_relic"]["ssl_ca_path"]    = ""
 default["new_relic"]["pidfile"]        = ""
 default["new_relic"]["collector_host"] = "collector.newrelic.com"
 default["new_relic"]["timeout"]        = 30
+default["new_relic"]["hostname"]       = ""
 ```
 
 
@@ -72,6 +73,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * fix default keyserver host name
 * **[@joe1chen](https://github.com/joe1chen)**
     * add apt dependency to metadata
+* **[@CloCkWeRX](https://github.com/CloCkWeRX)**
+    * initial implementation of `hostname` attribute
 
 
 ## License
