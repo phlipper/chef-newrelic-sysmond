@@ -5,7 +5,14 @@
 # Copyright 2011-2014, Phil Cohen
 #
 
-return if node["new_relic"]["license_key"].empty?
+if node["new_relic"]["license_key"].empty?
+  log "message" do
+      message "newrelic-sysmond recipe included, but licence key not provided."
+      level :warn
+  end
+
+  return
+end
 
 if platform_family?("debian")
   apt_repository "newrelic" do
