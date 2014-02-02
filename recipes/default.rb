@@ -8,7 +8,7 @@
 if node["new_relic"]["license_key"].empty?
   log "message" do
       message "newrelic-sysmond recipe included, but licence key not provided."
-      level :info
+      level :warn
   end
 
   return
