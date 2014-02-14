@@ -6,6 +6,15 @@ describe "newrelic-sysmond::default" do
   context "with no `license_key` attribute" do
     let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
+    it "logs a warning about the missing license key" do
+      # `write_log` should match a regex :\
+      expect(chef_run).to write_log(<<-EOM
+The `newrelic-sysmond` recipe was included, but a licence key was not provided.
+Please set `node["new_relic"]["license_key"]` to avoid this warning.
+EOM
+      ).with(level: :warn)
+    end
+
     it "does not install the `newrelic-sysmond` package" do
       expect(chef_run).to_not install_package("newrelic-sysmond")
     end
