@@ -12,6 +12,7 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 The following cookbooks are direct dependencies:
 
 * apt (for Debian and Ubuntu)
+* yum (for RHEL and CentOS)
 
 ### Supported Platforms
 
