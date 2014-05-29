@@ -39,28 +39,14 @@ EOM
 
   # rhel family setup
   context "using rhel platform family" do
-    let(:yum_cmd) { "yum list installed | grep newrelic-repo.noarch" }
-
     let(:chef_run) do
       ChefSpec::Runner.new(platform: "centos", version: "6.3") { |node|
         node.set["new_relic"]["license_key"] = "abc123"
       }.converge(described_recipe)
     end
 
-    context "when `newrelic-repo.noarch` is not installed" do
-      before { stub_command(yum_cmd).and_return(false) }
-
-      it "adds the New Relic Yum repository" do
-        expect(chef_run).to run_execute("Add New Relic yum repository")
-      end
-    end
-
-    context "when `newrelic-repo.noarch` is installed" do
-      before { stub_command(yum_cmd).and_return(true) }
-
-      it "does not add the New Relic Yum repository" do
-        expect(chef_run).to_not run_execute("Add New Relic yum repository")
-      end
+    it "sets up a yum repository" do
+      expect(chef_run).to create_yum_repository("newrelic")
     end
   end
 
