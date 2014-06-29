@@ -62,7 +62,6 @@ You must set the value for `node["new_relic"]["license_key"]`
 5. Create new Pull Request
 
 
-
 ## Contributors
 
 Many thanks go to the following [contributors](https://github.com/phlipper/chef-newrelic-sysmond/graphs/contributors) who have helped to make this cookbook even better:
@@ -84,6 +83,3 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
 * Freely distributable and licensed under the [MIT license](http://phlipper.mit-license.org/2011-2014/license.html).
 * Copyright (c) 2011-2014 Phil Cohen (github@phlippers.net) [![endorse](http://api.coderwall.com/phlipper/endorsecount.png)](http://coderwall.com/phlipper)  [![Gittip](http://img.shields.io/gittip/phlipper.png)](https://www.gittip.com/phlipper/)
 * http://phlippers.net/
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/phlipper/chef-newrelic-sysmond/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
