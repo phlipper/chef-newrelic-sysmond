@@ -21,13 +21,13 @@ end
 if platform_family?("debian")
   apt_repository "newrelic" do
     uri "http://apt.newrelic.com/debian/"
-    components ["newrelic", "non-free"]
+    components %w[newrelic non-free]
     key "548C16BF"
     keyserver node["new_relic"]["keyserver"]
   end
 elsif platform_family?("rhel")
   execute "Add New Relic yum repository" do
-    command "rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm"
+    command "rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm" # rubocop:disable LineLength
     not_if "yum list installed | grep newrelic-repo.noarch"
   end
 end

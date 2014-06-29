@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe "newrelic-sysmond::default" do
-
   # no license key == no action
   context "with no `license_key` attribute" do
     let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
@@ -11,7 +10,7 @@ describe "newrelic-sysmond::default" do
       expect(chef_run).to write_log(<<-EOM
 The `newrelic-sysmond` recipe was included, but a licence key was not provided.
 Please set `node["new_relic"]["license_key"]` to avoid this warning.
-EOM
+        EOM
       ).with(level: :warn)
     end
 
@@ -27,9 +26,9 @@ EOM
   # debian family setup
   context "using debian platform family" do
     let(:chef_run) do
-      ChefSpec::Runner.new(platform: "ubuntu", version: "12.04") { |node|
+      ChefSpec::Runner.new(platform: "ubuntu", version: "12.04") do |node|
         node.set["new_relic"]["license_key"] = "abc123"
-      }.converge(described_recipe)
+      end.converge(described_recipe)
     end
 
     it "sets up an apt repository" do
@@ -42,9 +41,9 @@ EOM
     let(:yum_cmd) { "yum list installed | grep newrelic-repo.noarch" }
 
     let(:chef_run) do
-      ChefSpec::Runner.new(platform: "centos", version: "6.3") { |node|
+      ChefSpec::Runner.new(platform: "centos", version: "6.3") do |node|
         node.set["new_relic"]["license_key"] = "abc123"
-      }.converge(described_recipe)
+      end.converge(described_recipe)
     end
 
     context "when `newrelic-repo.noarch` is not installed" do
@@ -64,13 +63,12 @@ EOM
     end
   end
 
-
   # default recipe run
   context "default run" do
     let(:chef_run) do
-      ChefSpec::Runner.new { |node|
+      ChefSpec::Runner.new do |node|
         node.set["new_relic"]["license_key"] = "abc123"
-      }.converge(described_recipe)
+      end.converge(described_recipe)
     end
 
     it "installs the `newrelic-sysmond` package" do
@@ -100,5 +98,4 @@ EOM
       )
     end
   end
-
 end
