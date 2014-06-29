@@ -1,1 +1,3 @@
-cookbook "newrelic-sysmond", path: "."
+source "https://api.berkshelf.com"
+
+metadata
