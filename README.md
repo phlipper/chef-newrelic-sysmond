@@ -12,6 +12,7 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 The following cookbooks are direct dependencies:
 
 * apt (for Debian and Ubuntu)
+* yum (for RHEL and CentOS)
 
 ### Supported Platforms
 
@@ -74,6 +75,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * add apt dependency to metadata
 * **[@CloCkWeRX](https://github.com/CloCkWeRX)**
     * initial implementation of `hostname` attribute
+* **[@apai4](https://github.com/apai4)**
+    * add 64bit yum repo support
 
 
 ## License

@@ -26,9 +26,11 @@ if platform_family?("debian")
     keyserver node["new_relic"]["keyserver"]
   end
 elsif platform_family?("rhel")
-  execute "Add New Relic yum repository" do
-    command "rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm" # rubocop:disable LineLength
-    not_if "yum list installed | grep newrelic-repo.noarch"
+  arch = node["kernel"]["machine"]
+  yum_repository "newrelic" do
+    baseurl "https://yum.newrelic.com/pub/newrelic/el5/#{arch}"
+    gpgcheck false
+    enabled true
   end
 end
 
