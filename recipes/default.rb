@@ -26,11 +26,10 @@ if platform_family?("debian")
     keyserver node["new_relic"]["keyserver"]
   end
 elsif platform_family?("rhel")
-  arch = node["kernel"]["machine"]
-  yum_repository "newrelic" do
-    baseurl "https://yum.newrelic.com/pub/newrelic/el5/#{arch}"
+  yum_repository node["yum"]["new_relic"]["name"] do
+    description node["yum"]["new_relic"]["description"]
+    baseurl node["yum"]["new_relic"]["baseurl"]
     gpgcheck false
-    enabled true
   end
 end
 
