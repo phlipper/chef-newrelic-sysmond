@@ -46,6 +46,12 @@ default["new_relic"]["pidfile"]        = ""
 default["new_relic"]["collector_host"] = "collector.newrelic.com"
 default["new_relic"]["timeout"]        = 30
 default["new_relic"]["hostname"]       = ""
+
+# Repository
+default["yum"]["new_relic"]["name"] = "newrelic"
+default["yum"]["new_relic"]["description"] = "New Relic"
+default["yum"]["new_relic"]["baseurl"] = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
+
 ```
 
 
