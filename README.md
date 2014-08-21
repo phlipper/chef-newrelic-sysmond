@@ -79,6 +79,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * initial implementation of `hostname` attribute
 * **[@apai4](https://github.com/apai4)**
     * add 64bit yum repo support
+* **[@jhsu](https://github.com/jhsu)**
+    * add `apt_uri` and `apt_key` attributes
 
 
 ## License
