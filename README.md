@@ -37,6 +37,7 @@ This cookbook installs the newrelic-sysmond components if not present, and pulls
 default["new_relic"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
 default["new_relic"]["apt_key"]        = "548C16BF"
 default["new_relic"]["keyserver"]      = "keyserver.ubuntu.com"
+default["new_relic"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
 default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
@@ -81,6 +82,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * add 64bit yum repo support
 * **[@jhsu](https://github.com/jhsu)**
     * add `apt_uri` and `apt_key` attributes
+* **[@jolexa](https://github.com/jolexa)**
+    * add `yum_baseurl` attribute
 
 
 ## License

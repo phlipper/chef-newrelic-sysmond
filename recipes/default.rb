@@ -18,20 +18,21 @@ EOM
   return
 end
 
-if platform_family?("debian")
-  apt_repository "newrelic" do
-    uri node["new_relic"]["apt_uri"]
-    components %w[newrelic non-free]
-    key node["new_relic"]["apt_key"]
-    keyserver node["new_relic"]["keyserver"]
-  end
-elsif platform_family?("rhel")
-  arch = node["kernel"]["machine"]
-  yum_repository "newrelic" do
-    baseurl "https://yum.newrelic.com/pub/newrelic/el5/#{arch}"
-    gpgcheck false
-    enabled true
-  end
+# apt repository
+apt_repository "newrelic" do
+  uri node["new_relic"]["apt_uri"]
+  components %w[newrelic non-free]
+  key node["new_relic"]["apt_key"]
+  keyserver node["new_relic"]["keyserver"]
+  only_if { platform_family?("debian") }
+end
+
+# yum repository
+yum_repository "newrelic" do
+  description "New Relic"
+  baseurl node["new_relic"]["yum_baseurl"]
+  gpgcheck false
+  only_if { platform_family?("rhel") }
 end
 
 package "newrelic-sysmond"
