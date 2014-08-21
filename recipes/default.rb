@@ -20,9 +20,9 @@ end
 
 if platform_family?("debian")
   apt_repository "newrelic" do
-    uri "http://apt.newrelic.com/debian/"
+    uri node["new_relic"]["apt_uri"]
     components %w[newrelic non-free]
-    key "548C16BF"
+    key node["new_relic"]["apt_key"]
     keyserver node["new_relic"]["keyserver"]
   end
 elsif platform_family?("rhel")
