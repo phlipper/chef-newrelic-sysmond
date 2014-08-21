@@ -9,7 +9,7 @@
 
 default["new_relic"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
 default["new_relic"]["apt_key"]        = "548C16BF"
-default["new_relic"]["keyserver"]      = "keyserver.ubuntu.com"
+default["new_relic"]["keyserver"]      = "hkp://keyserver.ubuntu.com:80"
 default["new_relic"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
