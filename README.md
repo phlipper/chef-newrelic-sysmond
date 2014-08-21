@@ -82,6 +82,8 @@ Many thanks go to the following [contributors](https://github.com/phlipper/chef-
     * add 64bit yum repo support
 * **[@jhsu](https://github.com/jhsu)**
     * add `apt_uri` and `apt_key` attributes
+* **[@jolexa](https://github.com/jolexa)**
+    * add `yum_baseurl` attribute
 
 
 ## License
