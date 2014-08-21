@@ -18,19 +18,21 @@ EOM
   return
 end
 
-if platform_family?("debian")
-  apt_repository "newrelic" do
-    uri node["new_relic"]["apt_uri"]
-    components %w[newrelic non-free]
-    key node["new_relic"]["apt_key"]
-    keyserver node["new_relic"]["keyserver"]
-  end
-elsif platform_family?("rhel")
-  yum_repository node["yum"]["new_relic"]["name"] do
-    description node["yum"]["new_relic"]["description"]
-    baseurl node["yum"]["new_relic"]["baseurl"]
-    gpgcheck false
-  end
+# apt repository
+apt_repository "newrelic" do
+  uri node["new_relic"]["apt_uri"]
+  components %w[newrelic non-free]
+  key node["new_relic"]["apt_key"]
+  keyserver node["new_relic"]["keyserver"]
+  only_if { platform_family?("debian") }
+end
+
+# yum repository
+yum_repository "newrelic" do
+  description "New Relic"
+  baseurl node["new_relic"]["yum_baseurl"]
+  gpgcheck false
+  only_if { platform_family?("rhel") }
 end
 
 package "newrelic-sysmond"

@@ -37,6 +37,7 @@ This cookbook installs the newrelic-sysmond components if not present, and pulls
 default["new_relic"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
 default["new_relic"]["apt_key"]        = "548C16BF"
 default["new_relic"]["keyserver"]      = "keyserver.ubuntu.com"
+default["new_relic"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
 default["new_relic"]["license_key"]    = ""
 default["new_relic"]["loglevel"]       = "info"
 default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
@@ -48,12 +49,6 @@ default["new_relic"]["pidfile"]        = ""
 default["new_relic"]["collector_host"] = "collector.newrelic.com"
 default["new_relic"]["timeout"]        = 30
 default["new_relic"]["hostname"]       = ""
-
-# Repository
-default["yum"]["new_relic"]["name"] = "newrelic"
-default["yum"]["new_relic"]["description"] = "New Relic"
-default["yum"]["new_relic"]["baseurl"] = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
-
 ```
 
 
