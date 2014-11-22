@@ -35,7 +35,10 @@ yum_repository "newrelic" do
   only_if { platform_family?("rhel") }
 end
 
-package "newrelic-sysmond"
+# install the package
+package "newrelic-sysmond" do
+  options %(-o Dpkg::Options::="--force-confdef") if platform_family?("debian")
+end
 
 template "/etc/newrelic/nrsysmond.cfg" do
   source "nrsysmond.cfg.erb"
