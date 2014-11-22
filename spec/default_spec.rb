@@ -3,7 +3,7 @@ require "spec_helper"
 describe "newrelic-sysmond::default" do
   # no license key == no action
   context "with no `license_key` attribute" do
-    let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+    let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
     it "logs a warning about the missing license key" do
       # `write_log` should match a regex :\
@@ -26,7 +26,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   # debian family setup
   context "using debian platform family" do
     let(:chef_run) do
-      ChefSpec::Runner.new(platform: "ubuntu", version: "12.04") do |node|
+      ChefSpec::SoloRunner.new(platform: "ubuntu", version: "12.04") do |node|
         node.set["new_relic"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
@@ -39,7 +39,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   # rhel family setup
   context "using rhel platform family" do
     let(:chef_run) do
-      ChefSpec::Runner.new(platform: "centos", version: "6.3") do |node|
+      ChefSpec::SoloRunner.new(platform: "centos", version: "6.3") do |node|
         node.set["new_relic"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
@@ -52,7 +52,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   # default recipe run
   context "default run" do
     let(:chef_run) do
-      ChefSpec::Runner.new do |node|
+      ChefSpec::SoloRunner.new do |node|
         node.set["new_relic"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
