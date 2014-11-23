@@ -44,10 +44,10 @@ logfile=<%= node["new_relic"]["logfile"] %>
 # Option : proxy
 # Value  : The name and optional login credentials of the proxy server to use
 #          for all communication with the New Relic collector. In its simplest
-#          form this setting is just a hostname["port"] setting. The default
+#          form this setting is just a hostname[:port] setting. The default
 #          port if none is specified is 1080. If your proxy requires a user
-#          name, use the syntax user@host["port"]. If it also requires a
-#          password use the format user:password@host["port"]. For example:
+#          name, use the syntax user@host[:port]. If it also requires a
+#          password use the format user:password@host[:port]. For example:
 #            fred:secret@proxy.mydomain.com:8181
 # Default: none (use a direct connection)
 #
@@ -56,24 +56,26 @@ proxy=<%= node["new_relic"]["proxy"] %>
 <% end %>
 
 #
-# Option : ssl
-# Value  : Whether or not to use the Secure Sockets Layer (SSL) for all
-#          communication with the New Relic collector. Possible values are
-#          true/on or false/off. In certain rare cases you may need to modify
-#          the SSL certificates settings below.
-# Default: false
+# Setting: ssl
+# Type   : boolean
+# Purpose: If you prefer the daemon to use the secure HTTP (https) protocol
+#          when communicating with the New Relic collector servers, set this
+#          to true.
+# Default: true (as of version 1.4)
 #
 ssl=<%= node["new_relic"]["ssl"] %>
 
 #
-# Option : ssl_ca_bundle
-# Value  : The name of a PEM-encoded Certificate Authority (CA) bundle to use
-#          for SSL connections. This very rarely needs to be set. The monitor
-#          will attempt to find the bundle in the most common locations. If
-#          you need to use SSL and the monitor is unable to locate a CA bundle
-#          then either set this value or the ssl_ca_path option below.
-# Default: /etc/ssl/certs/ca-certificates.crt or
-#          /etc/pki/tls/certs/ca-bundle.crt
+# Setting: ssl_ca_bundle
+# Type   : string
+# Purpose: Sets the location of a file containing CA certificates in PEM
+#          format. When set, the certificates in this file will be used
+#          to authenticate the New Relic collector servers. If ssl_ca_path
+#          is also set (see below), the certificates in this file will be
+#          searched first, followed by the certificates contained in the
+#          ssl_ca_path directory. This setting has no effect when ssl
+#          is set to false.
+# Default: none
 # Note   : Can also be set with the -b command line option.
 #
 <% if !node["new_relic"]["ssl_ca_bundle"].empty? %>
@@ -81,11 +83,15 @@ ssl_ca_bundle=<%= node["new_relic"]["ssl_ca_bundle"] %>
 <% end %>
 
 #
-# Option : ssl_ca_path
-# Value  : If your SSL installation does not use CA bundles, but rather has a
-#          directory with PEM-encoded Certificate Authority files, set this
-#          option to the name of the directory that contains all the CA files.
-# Default: /etc/ssl/certs
+# Setting: ssl_ca_path
+# Type   : string
+# Purpose: Sets the location of a directory containing trusted CA certificates
+#          in PEM format. When set, the certificates in this directory will be
+#          used to authenticate the New Relic collector servers. If
+#          ssl_ca_bundle is also set (see above), it will be searched first
+#          followed by the certificates contained in ssl_ca_path. This
+#          setting has no effect when ssl is set to false.
+# Default: none
 # Note   : Can also be set with the -S command line option.
 #
 <% if !node["new_relic"]["ssl_ca_path"].empty? %>
@@ -109,7 +115,7 @@ pidfile=<%= node["new_relic"]["pidfile"] %>
 # Option : collector_host
 # Value  : The name of the New Relic collector to connect to. This should only
 #          ever be changed on advise from a New Relic support staff member.
-#          The format is host["port"]. Using a port number of 0 means the default
+#          The format is host[:port]. Using a port number of 0 means the default
 #          port, which is 80 (if not using the ssl option - see below) or 443
 #          if SSL is enabled. If the port is omitted the default value is used.
 # Default: collector.newrelic.com
@@ -155,4 +161,16 @@ timeout=<%= node["new_relic"]["timeout"] %>
 #
 <% unless node["new_relic"]["hostname"].empty? -%>
 hostname=<%= node["new_relic"]["hostname"] %>
+<% end %>
+
+# Option : labels
+# Value  : A series of label_type/label_value pairings
+#          Each item in the pair is separated by a colon
+#          Each pair is separated by a semicolon
+#          e.g.
+#            labels = Environment:Production;DataCenter:EastUS;
+# Default: none
+#
+<% unless node["new_relic"]["labels"].empty? -%>
+labels=<%= node["new_relic"]["labels"] %>
 <% end %>

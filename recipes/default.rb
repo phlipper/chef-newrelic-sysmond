@@ -35,8 +35,32 @@ yum_repository "newrelic" do
   only_if { platform_family?("rhel") }
 end
 
-package "newrelic-sysmond"
+# install the package
+package "newrelic-sysmond" do
+  options %(-o Dpkg::Options::="--force-confdef") if platform_family?("debian")
+end
 
+# ensure the pidfile directory exists
+directory File.dirname(node["new_relic"]["pidfile"]) do
+  owner "newrelic"
+  group "newrelic"
+  recursive true
+  not_if { node["new_relic"]["pidfile"].empty? }
+end
+
+# replace init with upstart on ubuntu
+if platform?("ubuntu")
+  file "/etc/init.d/newrelic-sysmond" do
+    action :delete
+  end
+
+  cookbook_file "/etc/init/newrelic-sysmond.conf" do
+    owner "root"
+    group "root"
+  end
+end
+
+# setup the main configuration file
 template "/etc/newrelic/nrsysmond.cfg" do
   source "nrsysmond.cfg.erb"
   owner "root"
@@ -45,6 +69,9 @@ template "/etc/newrelic/nrsysmond.cfg" do
   notifies :restart, "service[newrelic-sysmond]"
 end
 
+# manage the service
 service "newrelic-sysmond" do
+  provider Chef::Provider::Service::Upstart if platform?("ubuntu")
+  supports status: true, restart: true
   action [:enable, :start]
 end
