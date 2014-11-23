@@ -49,6 +49,7 @@ default["new_relic"]["pidfile"]        = "/var/run/newrelic/nrsysmond.pid"
 default["new_relic"]["collector_host"] = "collector.newrelic.com"
 default["new_relic"]["timeout"]        = 30
 default["new_relic"]["hostname"]       = ""
+default["new_relic"]["labels"]         = ""
 ```
 
 

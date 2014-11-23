@@ -162,3 +162,15 @@ timeout=<%= node["new_relic"]["timeout"] %>
 <% unless node["new_relic"]["hostname"].empty? -%>
 hostname=<%= node["new_relic"]["hostname"] %>
 <% end %>
+
+# Option : labels
+# Value  : A series of label_type/label_value pairings
+#          Each item in the pair is separated by a colon
+#          Each pair is separated by a semicolon
+#          e.g.
+#            labels = Environment:Production;DataCenter:EastUS;
+# Default: none
+#
+<% unless node["new_relic"]["labels"].empty? -%>
+labels=<%= node["new_relic"]["labels"] %>
+<% end %>
