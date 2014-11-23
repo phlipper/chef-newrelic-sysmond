@@ -40,6 +40,14 @@ package "newrelic-sysmond" do
   options %(-o Dpkg::Options::="--force-confdef") if platform_family?("debian")
 end
 
+# ensure the pidfile directory exists
+directory File.dirname(node["new_relic"]["pidfile"]) do
+  owner "newrelic"
+  group "newrelic"
+  recursive true
+  not_if { node["new_relic"]["pidfile"].empty? }
+end
+
 template "/etc/newrelic/nrsysmond.cfg" do
   source "nrsysmond.cfg.erb"
   owner "root"

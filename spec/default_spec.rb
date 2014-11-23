@@ -61,6 +61,14 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
       expect(chef_run).to install_package("newrelic-sysmond")
     end
 
+    it "ensures that the `pidfile` directory exists" do
+      expect(chef_run).to create_directory("/var/run/newrelic").with(
+        owner: "newrelic",
+        group: "newrelic",
+        recursive: true
+      )
+    end
+
     it "enables the newrelic-sysmond service at startup" do
       expect(chef_run).to enable_service("newrelic-sysmond")
     end
