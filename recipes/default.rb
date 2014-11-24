@@ -65,6 +65,7 @@ template "/etc/newrelic/nrsysmond.cfg" do
   owner "root"
   group "newrelic"
   mode "0640"
+  sensitive true
   notifies :restart, "service[newrelic-sysmond]"
 end
 

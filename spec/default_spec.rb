@@ -113,11 +113,16 @@ Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
         source: "nrsysmond.cfg.erb",
         owner: "root",
         group: "newrelic",
-        mode: "0640"
+        mode: "0640",
+        sensitive: true
       )
 
       expect(chef_run).to(
         render_file(config_file).with_content("license_key=abc123")
+      )
+
+      expect(chef_run.template(config_file)).to(
+        notify("service[newrelic-sysmond]").to(:restart)
       )
     end
   end
