@@ -24,8 +24,8 @@ The following platforms are supported by this cookbook, meaning that the recipes
 
 * Debian
 * Ubuntu
-* Red Hat Enterprise Linux 5 & 6
-* CentOS 5 & 6
+* Red Hat Enterprise Linux 6
+* CentOS 6
 
 ## Recipes
 

@@ -13,5 +13,5 @@ depends "yum", ">= 3.0"
 
 supports "debian"
 supports "ubuntu"
-supports "redhat", ">= 5.0"
-supports "centos", ">= 5.0"
+supports "redhat", ">= 6.0"
+supports "centos", ">= 6.0"
