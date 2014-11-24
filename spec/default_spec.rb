@@ -21,7 +21,7 @@ describe "newrelic-sysmond::default" do
       # `write_log` should match a regex :\
       expect(chef_run).to write_log(<<-EOM
 The `newrelic-sysmond` recipe was included, but a licence key was not provided.
-Please set `node["new_relic"]["license_key"]` to avoid this warning.
+Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
         EOM
       ).with(level: :warn)
     end
@@ -39,7 +39,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "using debian platform family" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: "ubuntu", version: "12.04") do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 
@@ -63,7 +63,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "using rhel platform family" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: "centos", version: "6.3") do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 
@@ -84,7 +84,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "default run" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 

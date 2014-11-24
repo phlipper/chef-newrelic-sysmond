@@ -5,10 +5,10 @@
 # Copyright 2011-2014, Phil Cohen
 #
 
-if node["new_relic"]["license_key"].empty?
+if node["newrelic-sysmond"]["license_key"].empty?
   warning = <<-EOM
 The `newrelic-sysmond` recipe was included, but a licence key was not provided.
-Please set `node["new_relic"]["license_key"]` to avoid this warning.
+Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
 EOM
 
   log warning do
@@ -20,17 +20,17 @@ end
 
 # apt repository
 apt_repository "newrelic" do
-  uri node["new_relic"]["apt_uri"]
+  uri node["newrelic-sysmond"]["apt_uri"]
   components %w[newrelic non-free]
-  key node["new_relic"]["apt_key"]
-  keyserver node["new_relic"]["keyserver"]
+  key node["newrelic-sysmond"]["apt_key"]
+  keyserver node["newrelic-sysmond"]["keyserver"]
   only_if { platform_family?("debian") }
 end
 
 # yum repository
 yum_repository "newrelic" do
   description "New Relic"
-  baseurl node["new_relic"]["yum_baseurl"]
+  baseurl node["newrelic-sysmond"]["yum_baseurl"]
   gpgcheck false
   only_if { platform_family?("rhel") }
 end
@@ -41,11 +41,11 @@ package "newrelic-sysmond" do
 end
 
 # ensure the pidfile directory exists
-directory File.dirname(node["new_relic"]["pidfile"]) do
+directory File.dirname(node["newrelic-sysmond"]["pidfile"]) do
   owner "newrelic"
   group "newrelic"
   recursive true
-  not_if { node["new_relic"]["pidfile"].empty? }
+  not_if { node["newrelic-sysmond"]["pidfile"].empty? }
 end
 
 # replace init with upstart on ubuntu
