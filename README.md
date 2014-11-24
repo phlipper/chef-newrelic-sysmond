@@ -7,12 +7,16 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 
 ## Requirements
 
+### Chef
+
+This cookbook requires Chef >= 11.13 due to the use of the `sensitive` attribute for some resources.
+
 ### Cookbooks
 
 The following cookbooks are direct dependencies:
 
-* apt (for Debian and Ubuntu)
-* yum (for RHEL and CentOS)
+* [apt](https://supermarket.getchef.com/cookbooks/apt) (for Debian and Ubuntu)
+* [yum](https://supermarket.getchef.com/cookbooks/yum) (for RHEL and CentOS)
 
 ### Supported Platforms
 

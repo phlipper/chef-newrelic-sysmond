@@ -13,7 +13,3 @@ script:
 - bundle exec rake chefspec
 - bundle exec rake kitchen:all
 - bundle exec license_finder --quiet
-env:
-  matrix:
-  - CHEF_VERSION: "10.30"
-  - CHEF_VERSION: "11.16"
