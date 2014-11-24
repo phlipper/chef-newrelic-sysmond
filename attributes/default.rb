@@ -7,6 +7,7 @@
 # Copyright 2011-2014, Phil Cohen
 #
 
+default["newrelic-sysmond"]["package_action"] = "install"  # or `upgrade`
 default["newrelic-sysmond"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
 default["newrelic-sysmond"]["apt_key"]        = "548C16BF"
 default["newrelic-sysmond"]["keyserver"]      = "hkp://keyserver.ubuntu.com:80"

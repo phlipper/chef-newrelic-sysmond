@@ -92,6 +92,10 @@ Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
       expect(chef_run).to install_package("newrelic-sysmond")
     end
 
+    it "does not upgrade the `newrelic-sysmond` package" do
+      expect(chef_run).to_not upgrade_package("newrelic-sysmond")
+    end
+
     it "ensures that the `pidfile` directory exists" do
       expect(chef_run).to create_directory("/var/run/newrelic").with(
         owner: "newrelic",
@@ -124,6 +128,24 @@ Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
       expect(chef_run.template(config_file)).to(
         notify("service[newrelic-sysmond]").to(:restart)
       )
+    end
+  end
+
+  # package upgrade vs. install
+  context "when `package_action` is `upgrade`" do
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new do |node|
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["package_action"] = "upgrade"
+      end.converge(described_recipe)
+    end
+
+    it "does not install the `newrelic-sysmond` package" do
+      expect(chef_run).to_not install_package("newrelic-sysmond")
+    end
+
+    it "upgrades the `newrelic-sysmond` package" do
+      expect(chef_run).to upgrade_package("newrelic-sysmond")
     end
   end
 end

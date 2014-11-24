@@ -38,6 +38,7 @@ end
 # install the package
 package "newrelic-sysmond" do
   options %(-o Dpkg::Options::="--force-confdef") if platform_family?("debian")
+  action node["newrelic-sysmond"]["package_action"].to_sym
 end
 
 # ensure the pidfile directory exists
