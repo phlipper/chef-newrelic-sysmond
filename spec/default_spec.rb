@@ -71,12 +71,12 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
       expect(chef_run).to create_yum_repository("newrelic")
     end
 
-    it "does not remove the default initscript" do
-      expect(chef_run).to_not delete_file(init_script)
+    it "removes the default initscript" do
+      expect(chef_run).to delete_file(init_script)
     end
 
-    it "does not provide an upstart initscript" do
-      expect(chef_run).to_not create_cookbook_file(upstart_script)
+    it "provides an upstart initscript" do
+      expect(chef_run).to create_cookbook_file(upstart_script)
     end
   end
 

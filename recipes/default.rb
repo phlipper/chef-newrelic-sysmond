@@ -49,15 +49,14 @@ directory File.dirname(node["new_relic"]["pidfile"]) do
 end
 
 # replace init with upstart on ubuntu
-if platform?("ubuntu")
-  file "/etc/init.d/newrelic-sysmond" do
-    action :delete
-  end
+file "/etc/init.d/newrelic-sysmond" do
+  action :delete
+end
 
-  cookbook_file "/etc/init/newrelic-sysmond.conf" do
-    owner "root"
-    group "root"
-  end
+cookbook_file "/etc/init/newrelic-sysmond.conf" do
+  source "newrelic-sysmond-#{node["platform_family"]}.conf"
+  owner "root"
+  group "root"
 end
 
 # setup the main configuration file
@@ -71,7 +70,7 @@ end
 
 # manage the service
 service "newrelic-sysmond" do
-  provider Chef::Provider::Service::Upstart if platform?("ubuntu")
+  provider Chef::Provider::Service::Upstart
   supports status: true, restart: true
   action [:enable, :start]
 end
