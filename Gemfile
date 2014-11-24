@@ -1,9 +1,7 @@
 source "https://rubygems.org"
 
-chef_version = ENV.fetch("CHEF_VERSION", "11.16")
-
-gem "chef", "~> #{chef_version}"
-gem "chefspec", "~> 4.1.1" if chef_version =~ /^11/
+gem "chef", "~> 11.16"
+gem "chefspec", "~> 4.1.1"
 
 gem "berkshelf", "~> 3.2.1"
 gem "foodcritic", "~> 4.0.0"

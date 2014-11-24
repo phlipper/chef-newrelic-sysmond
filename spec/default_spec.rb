@@ -21,7 +21,7 @@ describe "newrelic-sysmond::default" do
       # `write_log` should match a regex :\
       expect(chef_run).to write_log(<<-EOM
 The `newrelic-sysmond` recipe was included, but a licence key was not provided.
-Please set `node["new_relic"]["license_key"]` to avoid this warning.
+Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
         EOM
       ).with(level: :warn)
     end
@@ -39,7 +39,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "using debian platform family" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: "ubuntu", version: "12.04") do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 
@@ -63,7 +63,7 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "using rhel platform family" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: "centos", version: "6.3") do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 
@@ -84,12 +84,16 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
   context "default run" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.set["new_relic"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
       end.converge(described_recipe)
     end
 
     it "installs the `newrelic-sysmond` package" do
       expect(chef_run).to install_package("newrelic-sysmond")
+    end
+
+    it "does not upgrade the `newrelic-sysmond` package" do
+      expect(chef_run).to_not upgrade_package("newrelic-sysmond")
     end
 
     it "ensures that the `pidfile` directory exists" do
@@ -113,12 +117,35 @@ Please set `node["new_relic"]["license_key"]` to avoid this warning.
         source: "nrsysmond.cfg.erb",
         owner: "root",
         group: "newrelic",
-        mode: "0640"
+        mode: "0640",
+        sensitive: true
       )
 
       expect(chef_run).to(
         render_file(config_file).with_content("license_key=abc123")
       )
+
+      expect(chef_run.template(config_file)).to(
+        notify("service[newrelic-sysmond]").to(:restart)
+      )
+    end
+  end
+
+  # package upgrade vs. install
+  context "when `package_action` is `upgrade`" do
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new do |node|
+        node.set["newrelic-sysmond"]["license_key"] = "abc123"
+        node.set["newrelic-sysmond"]["package_action"] = "upgrade"
+      end.converge(described_recipe)
+    end
+
+    it "does not install the `newrelic-sysmond` package" do
+      expect(chef_run).to_not install_package("newrelic-sysmond")
+    end
+
+    it "upgrades the `newrelic-sysmond` package" do
+      expect(chef_run).to upgrade_package("newrelic-sysmond")
     end
   end
 end

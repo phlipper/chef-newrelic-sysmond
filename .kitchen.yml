@@ -17,5 +17,5 @@ suites:
     run_list:
       - recipe[newrelic-sysmond]
     attributes:
-      new_relic:
+      newrelic-sysmond:
         license_key: <%= ENV.fetch("NEWRELIC_SYSMOND_LICENSE_KEY", "invalid-license-key") %>

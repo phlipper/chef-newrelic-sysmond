@@ -7,12 +7,16 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 
 ## Requirements
 
+### Chef
+
+This cookbook requires Chef >= 11.13 due to the use of the `sensitive` attribute for some resources.
+
 ### Cookbooks
 
 The following cookbooks are direct dependencies:
 
-* apt (for Debian and Ubuntu)
-* yum (for RHEL and CentOS)
+* [apt](https://supermarket.getchef.com/cookbooks/apt) (for Debian and Ubuntu)
+* [yum](https://supermarket.getchef.com/cookbooks/yum) (for RHEL and CentOS)
 
 ### Supported Platforms
 
@@ -34,28 +38,29 @@ This cookbook installs the newrelic-sysmond components if not present, and pulls
 ## Attributes
 
 ```ruby
-default["new_relic"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
-default["new_relic"]["apt_key"]        = "548C16BF"
-default["new_relic"]["keyserver"]      = "hkp://keyserver.ubuntu.com:80"
-default["new_relic"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
-default["new_relic"]["license_key"]    = ""
-default["new_relic"]["loglevel"]       = "info"
-default["new_relic"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
-default["new_relic"]["proxy"]          = ""
-default["new_relic"]["ssl"]            = "true"
-default["new_relic"]["ssl_ca_bundle"]  = ""
-default["new_relic"]["ssl_ca_path"]    = ""
-default["new_relic"]["pidfile"]        = "/var/run/newrelic/nrsysmond.pid"
-default["new_relic"]["collector_host"] = "collector.newrelic.com"
-default["new_relic"]["timeout"]        = 30
-default["new_relic"]["hostname"]       = ""
-default["new_relic"]["labels"]         = ""
+default["newrelic-sysmond"]["package_action"] = "install"  # or `upgrade`
+default["newrelic-sysmond"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
+default["newrelic-sysmond"]["apt_key"]        = "548C16BF"
+default["newrelic-sysmond"]["keyserver"]      = "hkp://keyserver.ubuntu.com:80"
+default["newrelic-sysmond"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
+default["newrelic-sysmond"]["license_key"]    = ""
+default["newrelic-sysmond"]["loglevel"]       = "info"
+default["newrelic-sysmond"]["logfile"]        = "/var/log/newrelic/nrsysmond.log"
+default["newrelic-sysmond"]["proxy"]          = ""
+default["newrelic-sysmond"]["ssl"]            = "true"
+default["newrelic-sysmond"]["ssl_ca_bundle"]  = ""
+default["newrelic-sysmond"]["ssl_ca_path"]    = ""
+default["newrelic-sysmond"]["pidfile"]        = "/var/run/newrelic/nrsysmond.pid"
+default["newrelic-sysmond"]["collector_host"] = "collector.newrelic.com"
+default["newrelic-sysmond"]["timeout"]        = 30
+default["newrelic-sysmond"]["hostname"]       = ""
+default["newrelic-sysmond"]["labels"]         = ""
 ```
 
 
 ## Basic Settings
 
-You must set the value for `node["new_relic"]["license_key"]`
+You must set the value for `node["newrelic-sysmond"]["license_key"]`
 
 
 ## Contributing
