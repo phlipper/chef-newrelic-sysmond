@@ -49,9 +49,11 @@ directory File.dirname(node["newrelic-sysmond"]["pidfile"]) do
   not_if { node["newrelic-sysmond"]["pidfile"].empty? }
 end
 
-# replace init with upstart on ubuntu
-file "/etc/init.d/newrelic-sysmond" do
-  action :delete
+if platform_family?("debian")
+  # replace init with upstart on ubuntu
+  file "/etc/init.d/newrelic-sysmond" do
+    action :delete
+  end
 end
 
 cookbook_file "/etc/init/newrelic-sysmond.conf" do
