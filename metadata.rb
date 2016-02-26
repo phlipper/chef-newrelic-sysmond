@@ -4,7 +4,7 @@ maintainer_email "github@phlippers.net"
 license          "MIT"
 description      "Setup New Relic sysmond for server monitoring"
 long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
-version          "2.0.0"
+version          "2.0.1"
 
 recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
