@@ -201,9 +201,9 @@ docker_cert=<%= node["newrelic-sysmond"]["docker_cert"] %>
 <% end %>
 
 <% if node["newrelic-sysmond"]["docker_key"] %>
-docker_cert=<%= node["newrelic-sysmond"]["docker_key"] %>
+docker_key=<%= node["newrelic-sysmond"]["docker_key"] %>
 <% end %>
 
 <% if node["newrelic-sysmond"]["docker_cacert"] %>
-docker_cert=<%= node["newrelic-sysmond"]["docker_cacert"] %>
+docker_cacert=<%= node["newrelic-sysmond"]["docker_cacert"] %>
 <% end %>
