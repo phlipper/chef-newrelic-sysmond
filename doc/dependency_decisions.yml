@@ -65,3 +65,17 @@
     :why: 
     :versions: []
     :when: 2016-04-18 08:01:22.915948614 Z
+- - :license
+  - unf
+  - BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2016-04-18 08:02:30.574592884 Z
+- - :license
+  - rubyzip
+  - BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2016-04-18 08:02:39.595603380 Z
