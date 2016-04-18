@@ -9,7 +9,7 @@ Installs [newrelic-sysmond](https://newrelic.com/docs/server/new-relic-for-serve
 
 ### Chef
 
-This cookbook requires Chef >= 11.13 due to the use of the `sensitive` attribute for some resources.
+This cookbook requires Chef >= 12
 
 ### Cookbooks
 

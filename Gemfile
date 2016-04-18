@@ -1,18 +1,19 @@
 source "https://rubygems.org"
 
-gem "chef", "~> 11.16"
-gem "chefspec", "~> 4.1.1"
+gem "chef", "~> 12"
+gem "chefspec"
 
-gem "berkshelf", "~> 3.2.1"
-gem "foodcritic", "~> 4.0.0"
-gem "license_finder", "~> 1.2.0"
+gem "berkshelf"
+gem "foodcritic"
+gem "license_finder"
 gem "rake"
-gem "rubocop", "~> 0.27.1"
-gem "serverspec", "~> 2.3.1"
+gem "rubocop"
+gem "serverspec"
+gem "rest-client", ">= 1.8.0"
 
 group :integration do
-  gem "busser-serverspec", "~> 0.5.3"
-  gem "guard-rspec", "~> 4.3.1"
-  gem "kitchen-vagrant", "~> 0.15.0"
-  gem "test-kitchen", "~> 1.2.1"
+  gem "busser-serverspec"
+  gem "guard-rspec"
+  gem "kitchen-vagrant"
+  gem "test-kitchen"
 end
