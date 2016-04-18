@@ -174,3 +174,36 @@ hostname=<%= node["newrelic-sysmond"]["hostname"] %>
 <% unless node["newrelic-sysmond"]["labels"].empty? -%>
 labels=<%= node["newrelic-sysmond"]["labels"] %>
 <% end %>
+
+
+<% if node["newrelic-sysmond"]["disable_nfs"] %>
+disable_nfs=<%= node["newrelic-sysmond"]["disable_nfs"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["ignore_reclaimable"] %>
+ignore_reclaimable=<%= node["newrelic-sysmond"]["ignore_reclaimable"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["disable_docker"] %>
+disable_docker=<%= node["newrelic-sysmond"]["disable_docker"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["docker_connection"] %>
+docker_connection=<%= node["newrelic-sysmond"]["docker_connection"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["docker_cert_path"] %>
+docker_cert_path=<%= node["newrelic-sysmond"]["docker_cert_path"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["docker_cert"] %>
+docker_cert=<%= node["newrelic-sysmond"]["docker_cert"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["docker_key"] %>
+docker_key=<%= node["newrelic-sysmond"]["docker_key"] %>
+<% end %>
+
+<% if node["newrelic-sysmond"]["docker_cacert"] %>
+docker_cacert=<%= node["newrelic-sysmond"]["docker_cacert"] %>
+<% end %>
