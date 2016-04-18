@@ -55,6 +55,17 @@ default["newrelic-sysmond"]["collector_host"] = "collector.newrelic.com"
 default["newrelic-sysmond"]["timeout"]        = 30
 default["newrelic-sysmond"]["hostname"]       = ""
 default["newrelic-sysmond"]["labels"]         = ""
+
+# See https://docs.newrelic.com/docs/servers/new-relic-servers-linux/installation-configuration/configuring-servers-linux
+default["newrelic-sysmond"]["disable_nfs"] = nil
+default["newrelic-sysmond"]["ignore_reclaimable"] = nil
+default["newrelic-sysmond"]["disable_docker"] = nil
+default["newrelic-sysmond"]["docker_connection"] = nil
+default["newrelic-sysmond"]["docker_cert_path"] = nil
+default["newrelic-sysmond"]["docker_cert"] = nil
+default["newrelic-sysmond"]["docker_key"] = nil
+default["newrelic-sysmond"]["docker_cacert"] = nil
+
 ```
 
 
