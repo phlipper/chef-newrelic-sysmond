@@ -17,5 +17,8 @@ PercentLiteralDelimiters:
 SpaceBeforeFirstArg:
   Enabled: false  # too strict about metadata and certain formatting
 
+RegexpLiteral:
+  Enabled: false
+
 inherit_from: test/support/rubocop/enabled.yml
 inherit_from: test/support/rubocop/disabled.yml

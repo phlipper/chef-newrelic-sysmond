@@ -19,11 +19,12 @@ describe "newrelic-sysmond::default" do
 
     it "logs a warning about the missing license key" do
       # `write_log` should match a regex :\
-      expect(chef_run).to write_log(<<-EOM
+      log_data = <<-EOM
 The `newrelic-sysmond` recipe was included, but a licence key was not provided.
 Please set `node["newrelic-sysmond"]["license_key"]` to avoid this warning.
         EOM
-      ).with(level: :warn)
+
+      expect(chef_run).to write_log(log_data).with(level: :warn)
     end
 
     it "does not install the `newrelic-sysmond` package" do
