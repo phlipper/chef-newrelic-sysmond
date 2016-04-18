@@ -5,6 +5,8 @@ license          "MIT"
 description      "Setup New Relic sysmond for server monitoring"
 long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
 version          "2.0.0"
+issues_url       "https://github.com/phlipper/chef-newrelic-sysmond/issues"
+source_url       "https://github.com/phlipper/chef-newrelic-sysmond/"
 
 recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
