@@ -10,6 +10,7 @@
 default["newrelic-sysmond"]["package_action"] = "install"  # or `upgrade`
 default["newrelic-sysmond"]["apt_uri"]        = "http://apt.newrelic.com/debian/"
 default["newrelic-sysmond"]["apt_key"]        = "548C16BF"
+default["newrelic-sysmond"]["apt_distribution"] = ""
 default["newrelic-sysmond"]["keyserver"]      = "hkp://keyserver.ubuntu.com:80"
 default["newrelic-sysmond"]["yum_baseurl"]    = "https://yum.newrelic.com/pub/newrelic/el5/#{node["kernel"]["machine"]}"
 default["newrelic-sysmond"]["license_key"]    = ""
