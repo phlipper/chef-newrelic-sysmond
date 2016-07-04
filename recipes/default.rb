@@ -52,6 +52,7 @@ end
 # replace init with upstart on ubuntu
 file "/etc/init.d/newrelic-sysmond" do
   action :delete
+  only_if { platform_family?("debian") }
 end
 
 cookbook_file "/etc/init/newrelic-sysmond.conf" do
