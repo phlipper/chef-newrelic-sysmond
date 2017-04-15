@@ -15,6 +15,10 @@
 #
 license_key=<%= node["newrelic-sysmond"]["license_key"] %>
 
+<% if node["fqdn"] %>
+hostname=<%= node["fqdn"] %>
+<% end %>
+
 #
 # Option : loglevel
 # Value  : Level of detail you want in the log file (as defined by the logfile
